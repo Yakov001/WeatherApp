@@ -8,12 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.internshipplayground.R
 import com.example.internshipplayground.model.Forecast
 import java.text.SimpleDateFormat
-import java.time.Instant
 import java.util.*
-import kotlin.time.hours
 
-class StringAdapter(private var dataSet: Forecast? = null) :
-    RecyclerView.Adapter<StringAdapter.ViewHolder>() {
+class ForecastAdapter(private var dataSet: Forecast? = null) :
+    RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.item_text)
