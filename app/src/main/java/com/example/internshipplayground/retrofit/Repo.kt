@@ -5,7 +5,7 @@ import retrofit2.Response
 
 class Repo {
 
-    suspend fun getWeather(lat: Double, long: Double): Response<Forecast> {
+    suspend fun getWeather(lat: Int, long: Int): Response<Forecast> {
         return RetrofitInstance.api.getWeather(lat, long)
     }
 

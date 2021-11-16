@@ -2,8 +2,10 @@ package com.example.internshipplayground.ui
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +27,9 @@ class MainActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         val buttonGetData = findViewById<Button>(R.id.button_send_request)
+        val editTextSetLat = findViewById<EditText>(R.id.select_latitude)
+        val editTextSetLong = findViewById<EditText>(R.id.select_longitude)
+
         viewModel = ViewModelProvider(this, MainViewModelFactory(Repo()))[MainViewModel::class.java]
 
         recyclerView.also {
@@ -44,5 +49,22 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        editTextSetLat.doOnTextChanged { text, _, _, _ ->
+            if (!text.isNullOrEmpty() && text.toString() != "-") {
+                viewModel.latitude = text.toString().toInt()
+                    .coerceAtMost(90)
+                    .coerceAtLeast(-90)
+            }
+
+        }
+
+        editTextSetLong.doOnTextChanged { text, _, _, _ ->
+            if (!text.isNullOrEmpty() && text.toString() != "-") {
+                viewModel.longitude = text.toString().toInt()
+                    .coerceAtMost(180)
+                    .coerceAtLeast(-180)
+            }
+
+        }
     }
 }

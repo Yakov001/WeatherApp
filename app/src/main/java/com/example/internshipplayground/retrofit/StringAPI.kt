@@ -10,7 +10,7 @@ interface StringAPI {
 
     @GET(ADDITION_URL)
     suspend fun getWeather(
-        @Query("lat") lat : Double = 60.0,
-        @Query("lon") long : Double = 30.0
+        @Query("lat") lat : Int = 60,
+        @Query("lon") long : Int = 30
     ) : Response<Forecast>
 }

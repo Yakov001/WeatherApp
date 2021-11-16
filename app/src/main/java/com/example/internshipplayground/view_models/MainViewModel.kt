@@ -12,9 +12,12 @@ class MainViewModel(private val repo: Repo) : ViewModel() {
 
     var forecastLiveData: MutableLiveData<Response<Forecast>> = MutableLiveData()
 
+    var latitude: Int = 60
+    var longitude: Int = 30
+
     fun updateData() {
         viewModelScope.launch {
-            val response = repo.getWeather(60.0, 30.0)
+            val response = repo.getWeather(latitude, longitude)
             if (response.isSuccessful) {
                 response.body()?.let {
                     for (i in it.hourly) { i.temp = i.temp.minus(273.15) }
@@ -23,4 +26,5 @@ class MainViewModel(private val repo: Repo) : ViewModel() {
             forecastLiveData.value = response
         }
     }
+
 }
