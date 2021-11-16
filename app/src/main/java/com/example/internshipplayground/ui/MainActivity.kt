@@ -1,9 +1,9 @@
 package com.example.internshipplayground.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,14 +13,11 @@ import com.example.internshipplayground.adapters.ForecastAdapter
 import com.example.internshipplayground.retrofit.Repo
 import com.example.internshipplayground.view_models.MainViewModel
 import com.example.internshipplayground.view_models.MainViewModelFactory
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     private val adapter by lazy { ForecastAdapter() }
-    private lateinit var viewModel : MainViewModel
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -14,7 +14,7 @@ class MainViewModel(private val repo: Repo) : ViewModel() {
 
     fun updateData() {
         viewModelScope.launch {
-            val response = repo.getWeather()
+            val response = repo.getWeather(60.0, 30.0)
             if (response.isSuccessful) {
                 response.body()?.let {
                     for (i in it.hourly) { i.temp = i.temp.minus(273.15) }
