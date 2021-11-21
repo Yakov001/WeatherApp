@@ -48,9 +48,12 @@ class MainActivity : AppCompatActivity() {
         viewModel.forecastLiveData.observe(this, Observer { resource ->
             when (resource) {
                 is Success -> adapter.setData(resource.data!!)
-                is Error   -> {
-                    val snackbar = Snackbar.make(findViewById(android.R.id.content), resource.message!!, Snackbar.LENGTH_SHORT)
-                    snackbar.show()
+                is Error -> {
+                    Snackbar.make(
+                        findViewById(R.id.coordinator),
+                        resource.message!!,
+                        Snackbar.LENGTH_SHORT
+                    ).show()
                 }
             }
         })
