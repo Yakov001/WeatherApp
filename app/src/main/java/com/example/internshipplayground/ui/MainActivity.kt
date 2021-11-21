@@ -1,6 +1,7 @@
 package com.example.internshipplayground.ui
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -17,6 +18,7 @@ import com.example.internshipplayground.utils.Resource.Error
 import com.example.internshipplayground.utils.Resource.Success
 import com.example.internshipplayground.view_models.MainViewModel
 import com.example.internshipplayground.view_models.MainViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,7 +48,10 @@ class MainActivity : AppCompatActivity() {
         viewModel.forecastLiveData.observe(this, Observer { resource ->
             when (resource) {
                 is Success -> adapter.setData(resource.data!!)
-                is Error   -> Toast.makeText(this, resource.message, Toast.LENGTH_SHORT).show()
+                is Error   -> {
+                    val snackbar = Snackbar.make(findViewById(android.R.id.content), resource.message!!, Snackbar.LENGTH_SHORT)
+                    snackbar.show()
+                }
             }
         })
 
