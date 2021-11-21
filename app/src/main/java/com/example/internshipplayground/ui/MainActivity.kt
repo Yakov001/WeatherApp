@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.internshipplayground.R
 import com.example.internshipplayground.adapters.ForecastAdapter
 import com.example.internshipplayground.retrofit.Repo
+import com.example.internshipplayground.utils.Resource.Error
+import com.example.internshipplayground.utils.Resource.Success
 import com.example.internshipplayground.view_models.MainViewModel
 import com.example.internshipplayground.view_models.MainViewModelFactory
 
@@ -41,11 +43,10 @@ class MainActivity : AppCompatActivity() {
             viewModel.updateData()
         }
 
-        viewModel.forecastLiveData.observe(this, Observer { response ->
-            if (response.isSuccessful) {
-                response.body()?.let { adapter.setData(it) }
-            } else {
-                Toast.makeText(this, response.code(), Toast.LENGTH_SHORT).show()
+        viewModel.forecastLiveData.observe(this, Observer { resource ->
+            when (resource) {
+                is Success -> adapter.setData(resource.data!!)
+                is Error   -> Toast.makeText(this, resource.message, Toast.LENGTH_SHORT).show()
             }
         })
 
