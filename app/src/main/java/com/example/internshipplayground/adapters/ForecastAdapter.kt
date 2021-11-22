@@ -33,7 +33,7 @@ class ForecastAdapter(private var dataSet: Forecast? = null) :
 
         holder.dateTextView.text =
             SimpleDateFormat("dd MMMM yyyy - HH:mm", Locale.getDefault()).format(timeText)
-        holder.weatherDescTextView.text = dataSet?.hourly?.get(position)?.weather?.get(0)?.description
+        holder.weatherDescTextView.text = dataSet?.hourly?.get(position)?.weather?.get(0)?.description?.capitalize()
         holder.temperatureTextView.text = temperatureText
         holder.windTextView.text = windSpeedText
     }

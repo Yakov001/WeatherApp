@@ -28,13 +28,6 @@ class MainViewModel(private val repo: Repo) : ViewModel() {
                 forecastLiveData.value = Resource.Error(null, "No Internet")
                 return@launch
             }
-            if (response.isSuccessful) {
-                response.body()?.let {
-                    for (i in it.hourly) {
-                        i.temp = i.temp.minus(273.15)
-                    }
-                }
-            }
             forecastLiveData.value = Resource.Success(response.body())
         }
     }

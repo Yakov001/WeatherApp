@@ -7,4 +7,5 @@
     <string name="longitude">Longitude</string>
     <string name="wind_speed_mock">2 km/h</string>
     <string name="weather_desc_mock">Rain</string>
+    <string name="weather_icon">weather_icon</string>
 </resources>
