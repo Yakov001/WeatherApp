@@ -3,6 +3,7 @@ package com.example.internshipplayground.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internshipplayground.R
@@ -18,6 +19,7 @@ class ForecastAdapter(private var dataSet: Forecast? = null) :
         val weatherDescTextView: TextView = view.findViewById(R.id.weather_description_text)
         val temperatureTextView: TextView = view.findViewById(R.id.item_text)
         val windTextView: TextView = view.findViewById(R.id.wind_speed_text)
+        val weatherIcon: ImageView = view.findViewById(R.id.weather_icon)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,6 +38,29 @@ class ForecastAdapter(private var dataSet: Forecast? = null) :
         holder.weatherDescTextView.text = dataSet?.hourly?.get(position)?.weather?.get(0)?.description?.capitalize()
         holder.temperatureTextView.text = temperatureText
         holder.windTextView.text = windSpeedText
+
+        holder.weatherIcon.apply {
+            when(dataSet?.hourly?.get(position)?.weather?.get(0)?.icon) {
+                "01d" -> this.setImageResource(R.drawable.a01d2x)
+                "01n" -> this.setImageResource(R.drawable.a01n2x)
+                "02d" -> this.setImageResource(R.drawable.a02d2x)
+                "02n" -> this.setImageResource(R.drawable.a02n2x)
+                "03d" -> this.setImageResource(R.drawable.a03d2x)
+                "03n" -> this.setImageResource(R.drawable.a03n2x)
+                "04d" -> this.setImageResource(R.drawable.a04d2x)
+                "04n" -> this.setImageResource(R.drawable.a04n2x)
+                "09d" -> this.setImageResource(R.drawable.a09d2x)
+                "09n" -> this.setImageResource(R.drawable.a09n2x)
+                "10d" -> this.setImageResource(R.drawable.a10d2x)
+                "10n" -> this.setImageResource(R.drawable.a10n2x)
+                "11d" -> this.setImageResource(R.drawable.a11d2x)
+                "11n" -> this.setImageResource(R.drawable.a11n2x)
+                "13d" -> this.setImageResource(R.drawable.a13d2x)
+                "13n" -> this.setImageResource(R.drawable.a13n2x)
+                "50d" -> this.setImageResource(R.drawable.a50n2x)
+                "50n" -> this.setImageResource(R.drawable.a50n2x)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
