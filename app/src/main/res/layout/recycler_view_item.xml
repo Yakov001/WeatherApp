@@ -14,21 +14,60 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <TextView
-        android:id="@+id/item_text"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/weather_stats_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/date"
-        android:text="@string/app_name"
-        android:textSize="15sp"
-        android:textColor="@color/design_default_color_error"/>
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/divider"
+            android:layout_marginEnd="20dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/weather_description_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="@string/weather_desc_mock"
+                android:textColor="@color/design_default_color_error"/>
+
+            <TextView
+                android:id="@+id/item_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/temp_preview"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/wind_speed_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="@string/wind_speed_mock"
+                />
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/divider"
-        app:layout_constraintTop_toBottomOf="@id/item_text"
+        app:layout_constraintTop_toBottomOf="@id/weather_stats_layout"
         android:layout_marginTop="20dp"
         />
 

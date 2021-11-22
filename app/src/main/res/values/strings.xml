@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name">InternshipPlayground</string>
+    <string name="temp_preview">5 Celsius</string>
     <string name="view_user">View User</string>
     <string name="check_weather">Check weather</string>
     <string name="date_mock">24 October 2021 – 11:00:00</string>
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>
+    <string name="wind_speed_mock">2 km/h</string>
+    <string name="weather_desc_mock">Rain</string>
 </resources>

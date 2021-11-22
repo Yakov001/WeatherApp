@@ -14,8 +14,10 @@ class ForecastAdapter(private var dataSet: Forecast? = null) :
     RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.item_text)
-        val dateText: TextView = view.findViewById(R.id.date)
+        val dateTextView: TextView = view.findViewById(R.id.date)
+        val weatherDescTextView: TextView = view.findViewById(R.id.weather_description_text)
+        val temperatureTextView: TextView = view.findViewById(R.id.item_text)
+        val windTextView: TextView = view.findViewById(R.id.wind_speed_text)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,11 +27,15 @@ class ForecastAdapter(private var dataSet: Forecast? = null) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val displayedText = "°C: ${String.format("%.2f", dataSet?.hourly?.get(position)?.temp)}"
-        val time = dataSet?.hourly?.get(position)?.dt?.toLong()?.let { Date(it * 1000) }
-        holder.textView.text = displayedText
-        holder.dateText.text =
-            SimpleDateFormat("yyyy/MM/dd - HH:mm", Locale.getDefault()).format(time)
+        val temperatureText = "°C: ${String.format("%.2f", dataSet?.hourly?.get(position)?.temp)}"
+        val timeText = dataSet?.hourly?.get(position)?.dt?.toLong()?.let { Date(it * 1000) }
+        val windSpeedText = "${ dataSet?.hourly?.get(position)?.wind_speed?.toString() } M/s"
+
+        holder.dateTextView.text =
+            SimpleDateFormat("dd MMMM yyyy - HH:mm", Locale.getDefault()).format(timeText)
+        holder.weatherDescTextView.text = dataSet?.hourly?.get(position)?.weather?.get(0)?.description
+        holder.temperatureTextView.text = temperatureText
+        holder.windTextView.text = windSpeedText
     }
 
     override fun getItemCount(): Int {
