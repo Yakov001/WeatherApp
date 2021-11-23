@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">18 Celsius</string>
     <string name="temp_preview">5 Celsius</string>
     <string name="view_user">View User</string>
     <string name="check_weather">Check weather</string>
