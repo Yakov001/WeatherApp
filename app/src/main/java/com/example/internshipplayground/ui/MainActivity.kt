@@ -1,11 +1,14 @@
 package com.example.internshipplayground.ui
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -18,6 +21,7 @@ import com.example.internshipplayground.utils.Resource.Error
 import com.example.internshipplayground.utils.Resource.Success
 import com.example.internshipplayground.view_models.MainViewModel
 import com.example.internshipplayground.view_models.MainViewModelFactory
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.bottom_app_bar))
 
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         val buttonGetData = findViewById<Button>(R.id.button_send_request)
@@ -75,5 +80,16 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                val modalBottomSheet = ModalBottomSheet()
+                //(modalBottomSheet.dialog as BottomSheetDialog).behavior   - NPE
+                modalBottomSheet.show(supportFragmentManager, ModalBottomSheet.TAG)
+            }
+        }
+        return true
     }
 }
