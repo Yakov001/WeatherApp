@@ -6,26 +6,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?colorSurfaceVariant"
     app:layout_behavior="@string/bottom_sheet_behavior"
+    android:padding="20dp"
+    android:tag="@string/weather_fragment"
     >
 
-    <TextView
-        android:id="@+id/bottom_sheet_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AMOGUS"
-        android:textSize="90sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <View
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bottom_sheet_text"
-        android:background="?colorTertiary"/>
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

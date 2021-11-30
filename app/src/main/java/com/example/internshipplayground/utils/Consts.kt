@@ -6,5 +6,5 @@ object Consts {
     const val ADDITION_URL = "onecall?exclude=daily,current,minutely,alerts" +
             "&appid=8ee48cb9a17352ed8d265326c0cd515d&units=metric"
 
-    const val MAP_API_KEY = "AIzaSyCV2rlVY561bUDPcOVjxiGKU2YpJNgJrMw"
+    const val MAP_API_KEY = "AIzaSyBfjyBbIPLicxklAEdCHI5EEiCw2QvoPJo"
 }

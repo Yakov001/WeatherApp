@@ -9,4 +9,5 @@
     <string name="wind_speed_mock">2 km/h</string>
     <string name="weather_desc_mock">Rain</string>
     <string name="weather_icon">weather_icon</string>
+    <string name="weather_fragment">weather_fragment</string>
 </resources>

@@ -1,17 +1,26 @@
 package com.example.internshipplayground.ui
 
 import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import com.example.internshipplayground.R
+import com.google.android.gms.maps.MapView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class ModalBottomSheet : BottomSheetDialogFragment() {
+
+    private var mapCallback : MapCallback? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mapCallback = context as MapCallback
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,6 +28,11 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_modal_bottom_sheet, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mapCallback!!.fragmentStarted(view.findViewById(R.id.map))
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -45,5 +59,9 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
 
     companion object {
         const val TAG = "ModalBottomSheet"
+    }
+
+    interface MapCallback {
+        fun fragmentStarted(map: MapView)
     }
 }

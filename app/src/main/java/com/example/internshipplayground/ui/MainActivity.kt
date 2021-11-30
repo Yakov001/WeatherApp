@@ -21,10 +21,15 @@ import com.example.internshipplayground.utils.Resource.Error
 import com.example.internshipplayground.utils.Resource.Success
 import com.example.internshipplayground.view_models.MainViewModel
 import com.example.internshipplayground.view_models.MainViewModelFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnMapReadyCallback, ModalBottomSheet.MapCallback {
 
     private val adapter by lazy { ForecastAdapter() }
     private lateinit var viewModel: MainViewModel
@@ -88,8 +93,27 @@ class MainActivity : AppCompatActivity() {
                 val modalBottomSheet = ModalBottomSheet()
                 //(modalBottomSheet.dialog as BottomSheetDialog).behavior   - NPE
                 modalBottomSheet.show(supportFragmentManager, ModalBottomSheet.TAG)
+
+                // Setup map
+                // val mapFragment = supportFragmentManager.findFragmentByTag(getString(R.string.weather_fragment))
+                /*val map = findViewById<MapView>(R.id.map)
+                map.getMapAsync(this)*/
+
             }
         }
         return true
+    }
+
+    override fun onMapReady(p0: GoogleMap) {
+        p0.addMarker(
+            MarkerOptions()
+                .position(LatLng(viewModel.latitude.toDouble(), viewModel.longitude.toDouble()))
+                .title("Marker")
+        )
+    }
+
+    override fun fragmentStarted(map: MapView) {
+        map.onCreate(null)
+        map.getMapAsync(this@MainActivity)
     }
 }
