@@ -7,13 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import com.example.internshipplayground.R
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapView
+import com.example.internshipplayground.view_models.MainViewModel
+import com.google.android.gms.maps.*
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class ModalBottomSheet : BottomSheetDialogFragment() {
+class ModalBottomSheet(private val viewModel: MainViewModel) : BottomSheetDialogFragment(), OnMapReadyCallback {
 
     private var map: GoogleMap? = null
 
@@ -30,7 +32,10 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
 
         view.findViewById<MapView>(R.id.mapView).let { mapView ->
             mapView.onCreate(savedInstanceState)
-            mapView.getMapAsync { map = it }
+            mapView.getMapAsync {
+                map = it
+                this.onMapReady(it)
+            }
         }
     }
 
@@ -88,5 +93,18 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
 
     companion object {
         const val TAG = "ModalBottomSheet"
+    }
+
+    override fun onMapReady(p0: GoogleMap) {
+        p0.addMarker(
+            MarkerOptions()
+                .position(LatLng(viewModel.latitude.toDouble(), viewModel.longitude.toDouble()))
+                .title("Marker")
+        )
+        p0.moveCamera(
+            CameraUpdateFactory.newLatLng(
+                LatLng(viewModel.latitude.toDouble(), viewModel.longitude.toDouble())
+            )
+        )
     }
 }

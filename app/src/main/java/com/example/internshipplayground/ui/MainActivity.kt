@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                val modalBottomSheet = ModalBottomSheet()
+                val modalBottomSheet = ModalBottomSheet(viewModel)
                 modalBottomSheet.show(supportFragmentManager, ModalBottomSheet.TAG)
             }
         }
