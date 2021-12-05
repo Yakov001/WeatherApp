@@ -1,13 +1,13 @@
 package com.example.internshipplayground.ui
 
 import android.app.Dialog
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import com.example.internshipplayground.R
+import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -15,12 +15,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class ModalBottomSheet : BottomSheetDialogFragment() {
 
-    private var mapCallback : MapCallback? = null
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mapCallback = context as MapCallback
-    }
+    private var map: GoogleMap? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,7 +27,41 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mapCallback!!.fragmentStarted(view.findViewById(R.id.map))
+
+        view.findViewById<MapView>(R.id.mapView).let { mapView ->
+            mapView.onCreate(savedInstanceState)
+            mapView.getMapAsync { map = it }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        view?.findViewById<MapView>(R.id.mapView)?.onResume()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        view?.findViewById<MapView>(R.id.mapView)?.onStart()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        view?.findViewById<MapView>(R.id.mapView)?.onStop()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        view?.findViewById<MapView>(R.id.mapView)?.onPause()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        view?.findViewById<MapView>(R.id.mapView)?.onLowMemory()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        view?.findViewById<MapView>(R.id.mapView)?.onSaveInstanceState(outState)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -59,9 +88,5 @@ class ModalBottomSheet : BottomSheetDialogFragment() {
 
     companion object {
         const val TAG = "ModalBottomSheet"
-    }
-
-    interface MapCallback {
-        fun fragmentStarted(map: MapView)
     }
 }

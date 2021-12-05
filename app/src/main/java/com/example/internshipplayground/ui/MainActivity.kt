@@ -29,7 +29,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : AppCompatActivity(), OnMapReadyCallback, ModalBottomSheet.MapCallback {
+class MainActivity : AppCompatActivity() {
 
     private val adapter by lazy { ForecastAdapter() }
     private lateinit var viewModel: MainViewModel
@@ -91,29 +91,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, ModalBottomSheet.M
         when (item.itemId) {
             android.R.id.home -> {
                 val modalBottomSheet = ModalBottomSheet()
-                //(modalBottomSheet.dialog as BottomSheetDialog).behavior   - NPE
                 modalBottomSheet.show(supportFragmentManager, ModalBottomSheet.TAG)
-
-                // Setup map
-                // val mapFragment = supportFragmentManager.findFragmentByTag(getString(R.string.weather_fragment))
-                /*val map = findViewById<MapView>(R.id.map)
-                map.getMapAsync(this)*/
-
             }
         }
         return true
-    }
-
-    override fun onMapReady(p0: GoogleMap) {
-        p0.addMarker(
-            MarkerOptions()
-                .position(LatLng(viewModel.latitude.toDouble(), viewModel.longitude.toDouble()))
-                .title("Marker")
-        )
-    }
-
-    override fun fragmentStarted(map: MapView) {
-        map.onCreate(null)
-        map.getMapAsync(this@MainActivity)
     }
 }
