@@ -1,4 +1,4 @@
-package com.example.internshipplayground.model
+package com.example.weather_app.model
 
 data class Hourly(
     val clouds: Int,

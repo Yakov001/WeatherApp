@@ -1,4 +1,4 @@
-package com.example.internshipplayground.ui
+package com.example.weather_app.ui
 
 import android.app.Dialog
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import com.example.internshipplayground.R
-import com.example.internshipplayground.view_models.MainViewModel
+import com.example.weather_app.R
+import com.example.weather_app.view_models.MainViewModel
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions

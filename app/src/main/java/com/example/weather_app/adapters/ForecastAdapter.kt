@@ -1,4 +1,4 @@
-package com.example.internshipplayground.adapters
+package com.example.weather_app.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.internshipplayground.R
-import com.example.internshipplayground.model.Forecast
+import com.example.weather_app.R
+import com.example.weather_app.model.Forecast
 import java.text.SimpleDateFormat
 import java.util.*
 

@@ -1,6 +1,6 @@
-package com.example.internshipplayground.retrofit
+package com.example.weather_app.retrofit
 
-import com.example.internshipplayground.utils.Consts.BASE_URL
+import com.example.weather_app.utils.Consts.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

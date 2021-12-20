@@ -1,16 +1,14 @@
-package com.example.internshipplayground.view_models
+package com.example.weather_app.view_models
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.internshipplayground.model.Forecast
-import com.example.internshipplayground.retrofit.Repo
-import com.example.internshipplayground.utils.Resource
+import com.example.weather_app.model.Forecast
+import com.example.weather_app.retrofit.Repo
+import com.example.weather_app.utils.Resource
 import kotlinx.coroutines.launch
-import retrofit2.Response
 import java.io.IOException
-import java.lang.Exception
 
 class MainViewModel(private val repo: Repo) : ViewModel() {
 

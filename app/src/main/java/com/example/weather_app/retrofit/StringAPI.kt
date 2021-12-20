@@ -1,7 +1,7 @@
-package com.example.internshipplayground.retrofit
+package com.example.weather_app.retrofit
 
-import com.example.internshipplayground.model.Forecast
-import com.example.internshipplayground.utils.Consts.ADDITION_URL
+import com.example.weather_app.model.Forecast
+import com.example.weather_app.utils.Consts.ADDITION_URL
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

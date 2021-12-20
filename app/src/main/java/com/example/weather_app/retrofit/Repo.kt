@@ -1,6 +1,6 @@
-package com.example.internshipplayground.retrofit
+package com.example.weather_app.retrofit
 
-import com.example.internshipplayground.model.Forecast
+import com.example.weather_app.model.Forecast
 import retrofit2.Response
 
 class Repo {

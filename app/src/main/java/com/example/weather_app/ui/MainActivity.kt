@@ -1,32 +1,22 @@
-package com.example.internshipplayground.ui
+package com.example.weather_app.ui
 
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.internshipplayground.R
-import com.example.internshipplayground.adapters.ForecastAdapter
-import com.example.internshipplayground.retrofit.Repo
-import com.example.internshipplayground.utils.Resource.Error
-import com.example.internshipplayground.utils.Resource.Success
-import com.example.internshipplayground.view_models.MainViewModel
-import com.example.internshipplayground.view_models.MainViewModelFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapView
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.example.weather_app.R
+import com.example.weather_app.adapters.ForecastAdapter
+import com.example.weather_app.retrofit.Repo
+import com.example.weather_app.utils.Resource.Error
+import com.example.weather_app.utils.Resource.Success
+import com.example.weather_app.view_models.MainViewModel
+import com.example.weather_app.view_models.MainViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {

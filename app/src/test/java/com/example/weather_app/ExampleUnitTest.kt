@@ -1,4 +1,4 @@
-package com.example.internshipplayground
+package com.example.weather_app
 
 import org.junit.Test
 
