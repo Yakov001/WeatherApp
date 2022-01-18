@@ -27,7 +27,10 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBfjyBbIPLicxklAEdCHI5EEiCw2QvoPJo" />
+            android:value="${GMP_KEY}" />
+        <meta-data
+            android:name="WEATHER_API_KEY"
+            android:value="${WEATHER_API_KEY}" />
 
     </application>
 
